@@ -606,8 +606,8 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                     ),
                     title = {
                         Column {
-                            Text("Cadastre Survey: Khasra ${p.surveyNo}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
-                            Text("${p.village} • RoR: ${"%.0f".format(p.rorAreaSqm)} sq m", style = MaterialTheme.typography.labelSmall, color = GovColors.TextSecondary)
+                            Text("Khasra ${p.surveyNo}", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text("${p.village} • ${"%.0f".format(p.rorAreaSqm)} sq m", style = MaterialTheme.typography.labelSmall, color = GovColors.TextSecondary, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         }
                     },
                     navigationIcon = {
@@ -915,31 +915,34 @@ private fun RoverStatusCard(
                     onClick = onToggleSimulation,
                     colors = ButtonDefaults.buttonColors(containerColor = if (isSimulating) MaterialTheme.colorScheme.error else GovColors.DeepBlue),
                     shape = RoundedCornerShape(6.dp),
-                    modifier = Modifier.weight(1f)
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
+                    modifier = Modifier.weight(1.1f)
                 ) {
                     Icon(if (isSimulating) Icons.Default.Close else Icons.Default.PlayArrow, null, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(4.dp))
-                    Text(if (isSimulating) "Stop Demo" else "Simulate Rover")
+                    Text(if (isSimulating) "Stop Demo" else "Demo Rover", maxLines = 1)
                 }
 
                 if (isSimulating) {
                     OutlinedButton(
                         onClick = onStepDemoCorner,
                         shape = RoundedCornerShape(6.dp),
+                        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
                         border = androidx.compose.foundation.BorderStroke(1.dp, GovColors.DeepBlue)
                     ) {
-                        Text("Next Peg", color = GovColors.DeepBlue, fontWeight = FontWeight.SemiBold)
+                        Text("Next Peg", color = GovColors.DeepBlue, fontWeight = FontWeight.SemiBold, maxLines = 1)
                     }
                 }
 
                 OutlinedButton(
                     onClick = onPickHardware,
                     shape = RoundedCornerShape(6.dp),
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, GovColors.Border)
                 ) {
                     Icon(Icons.Default.Bluetooth, null, modifier = Modifier.size(16.dp), tint = GovColors.DeepBlue)
                     Spacer(Modifier.width(4.dp))
-                    Text("Hardware", color = GovColors.DeepBlue, fontWeight = FontWeight.SemiBold)
+                    Text("Hardware", color = GovColors.DeepBlue, fontWeight = FontWeight.SemiBold, maxLines = 1)
                 }
             }
         }
