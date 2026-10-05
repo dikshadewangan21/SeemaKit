@@ -56,8 +56,6 @@ fun ParcelCanvas(
 
     Box(
         modifier = modifier
-            .fillMaxWidth()
-            .height(260.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Color(0xFFF1F8F1))
     ) {
@@ -116,18 +114,24 @@ fun ParcelCanvas(
             val minLon = allPts.minOf { it.second }
             val maxLon = allPts.maxOf { it.second }
 
-            val latSpan = max(maxLat - minLat, 0.00008)
-            val lonSpan = max(maxLon - minLon, 0.00008)
+            val midLat = (minLat + maxLat) / 2.0
+            val cosLat = cos(Math.toRadians(midLat))
+            val dLonDeg = max(maxLon - minLon, 0.00008)
+            val dLatDeg = max(maxLat - minLat, 0.00008)
+            val effLonSpan = dLonDeg * cosLat
+            val effLatSpan = dLatDeg
 
             val pad = 40f
-            val usableW = canvasW - pad * 2
-            val usableH = canvasH - pad * 2
+            val usableW = max(canvasW - pad * 2, 10f)
+            val usableH = max(canvasH - pad * 2, 10f)
+
+            val scale = min(usableW / effLonSpan, usableH / effLatSpan)
+            val offsetX = pad + (usableW - effLonSpan * scale) / 2.0
+            val offsetY = pad + (usableH - effLatSpan * scale) / 2.0
 
             fun project(lat: Double, lon: Double): Offset {
-                val nx = ((lon - minLon) / lonSpan).toFloat()
-                val ny = ((lat - minLat) / latSpan).toFloat()
-                val px = pad + nx * usableW
-                val py = canvasH - (pad + ny * usableH) // Invert Y (North is up)
+                val px = (offsetX + (lon - minLon) * cosLat * scale).toFloat()
+                val py = (canvasH - (offsetY + (lat - minLat) * scale)).toFloat()
                 return Offset(px, py)
             }
 

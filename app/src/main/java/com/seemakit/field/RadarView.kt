@@ -59,8 +59,6 @@ fun StakeoutRadar(
 
     Box(
         modifier = modifier
-            .fillMaxWidth()
-            .height(260.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Color(0xFF1E2822)),
         contentAlignment = Alignment.Center
