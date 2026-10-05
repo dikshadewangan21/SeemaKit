@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -56,19 +57,20 @@ fun ParcelCanvas(
 
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFF1F8F1))
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color(0xFFF8FAFC))
+            .border(1.dp, Color(0xFFCBD5E1), RoundedCornerShape(12.dp))
     ) {
         Canvas(modifier = Modifier.fillMaxSize().padding(16.dp)) {
             val canvasW = size.width
             val canvasH = size.height
 
-            // 1. Draw subtle coordinate grid background
+            // 1. Draw subtle coordinate grid background (Government blueprint grid)
             val gridSpacing = 40.dp.toPx()
             var gx = 0f
             while (gx < canvasW) {
                 drawLine(
-                    color = Color(0xFFD7E5D7),
+                    color = Color(0xFFE2E8F0),
                     start = Offset(gx, 0f),
                     end = Offset(gx, canvasH),
                     strokeWidth = 1f
@@ -78,7 +80,7 @@ fun ParcelCanvas(
             var gy = 0f
             while (gy < canvasH) {
                 drawLine(
-                    color = Color(0xFFD7E5D7),
+                    color = Color(0xFFE2E8F0),
                     start = Offset(0f, gy),
                     end = Offset(canvasW, gy),
                     strokeWidth = 1f
@@ -147,23 +149,23 @@ fun ParcelCanvas(
 
                 if (corners.size >= 3) {
                     path.close()
-                    // Fill parcel area with semi-transparent green
+                    // Fill parcel area with subtle official tint
                     drawPath(
                         path = path,
-                        color = Color(0x354CAF50)
+                        color = Color(0x180B3C5D)
                     )
                 }
 
-                // Draw perimeter boundary line
+                // Draw perimeter boundary line in Deep Blue
                 drawPath(
                     path = path,
-                    color = Color(0xFF2E7D32),
-                    style = Stroke(width = 4.dp.toPx())
+                    color = Color(0xFF0B3C5D),
+                    style = Stroke(width = 3.5f.dp.toPx())
                 )
 
                 // 4. Draw Distance annotations along each boundary segment
                 val textPaint = Paint().apply {
-                    color = Color(0xFF1B5E20).toArgb()
+                    color = Color(0xFF0B3C5D).toArgb()
                     textSize = 24f
                     typeface = Typeface.DEFAULT_BOLD
                     textAlign = Paint.Align.CENTER
@@ -181,12 +183,13 @@ fun ParcelCanvas(
                 }
             }
 
-            // 5. Draw Numbered Corner Pegs
+            // 5. Draw Numbered Corner Pegs (Saffron for GCP, Deep Blue for Cadastral Pegs)
             corners.forEach { c ->
                 val pt = project(c.lat, c.lon)
+                val pegColor = if (c.isGcp) Color(0xFFE66710) else Color(0xFF0B3C5D)
                 // Outer ring
                 drawCircle(
-                    color = if (c.isGcp) Color(0xFFE65100) else Color(0xFF1B5E20),
+                    color = pegColor,
                     radius = 14.dp.toPx(),
                     center = pt
                 )
@@ -202,7 +205,7 @@ fun ParcelCanvas(
                     pt.x,
                     pt.y + 10f,
                     Paint().apply {
-                        color = if (c.isGcp) Color(0xFFE65100).toArgb() else Color(0xFF1B5E20).toArgb()
+                        color = pegColor.toArgb()
                         textSize = 26f
                         typeface = Typeface.DEFAULT_BOLD
                         textAlign = Paint.Align.CENTER

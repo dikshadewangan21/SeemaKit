@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -59,8 +60,9 @@ fun StakeoutRadar(
 
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFF1E2822)),
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color(0xFF0B1926))
+            .border(1.dp, Color(0xFF1E3A52), RoundedCornerShape(12.dp)),
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.fillMaxSize().padding(16.dp)) {
@@ -73,11 +75,11 @@ fun StakeoutRadar(
             val r5 = maxR * 0.6f
             val r1 = maxR * 0.25f
 
-            val ringColor = Color(0xFF3E5446)
+            val ringColor = Color(0xFF1E3A52)
             drawCircle(color = ringColor, radius = r10, center = Offset(cx, cy), style = Stroke(width = 2f))
             drawCircle(color = ringColor, radius = r5, center = Offset(cx, cy), style = Stroke(width = 2f))
             drawCircle(
-                color = if (isOnTarget) Color(0xFF4CAF50) else ringColor,
+                color = if (isOnTarget) Color(0xFF138808) else ringColor,
                 radius = r1,
                 center = Offset(cx, cy),
                 style = Stroke(width = if (isOnTarget) 4f else 2f)
@@ -89,7 +91,7 @@ fun StakeoutRadar(
 
             // Ring distance labels
             val ringPaint = Paint().apply {
-                color = android.graphics.Color.GRAY
+                color = Color(0xFF64748B).toArgb()
                 textSize = 20f
                 typeface = Typeface.DEFAULT_BOLD
             }
@@ -103,7 +105,7 @@ fun StakeoutRadar(
                 cx,
                 cy - maxR - 4f,
                 Paint().apply {
-                    color = android.graphics.Color.LTGRAY
+                    color = Color(0xFF94A3B8).toArgb()
                     textSize = 24f
                     typeface = Typeface.DEFAULT_BOLD
                     textAlign = Paint.Align.CENTER
@@ -112,9 +114,9 @@ fun StakeoutRadar(
 
             // Directional pointer needle
             val needleColor = when {
-                isOnTarget -> Color(0xFF4CAF50)
-                distanceMeters <= 5.0 -> Color(0xFFFFB300)
-                else -> Color(0xFF03A9F4)
+                isOnTarget -> Color(0xFF138808)
+                distanceMeters <= 5.0 -> Color(0xFFE66710) // Saffron close approach
+                else -> Color(0xFF0284C7)                  // Sky blue search needle
             }
 
             rotate(degrees = bearingDegrees.toFloat(), pivot = Offset(cx, cy)) {
@@ -141,12 +143,12 @@ fun StakeoutRadar(
             if (isOnTarget) {
                 // Expanding green shockwave
                 drawCircle(
-                    color = Color(0xFF4CAF50).copy(alpha = lockAlpha),
+                    color = Color(0xFF138808).copy(alpha = lockAlpha),
                     radius = r1 * (lockRadius / 25f),
                     center = Offset(cx, cy)
                 )
                 drawCircle(
-                    color = Color(0xFF4CAF50),
+                    color = Color(0xFF138808),
                     radius = 16f,
                     center = Offset(cx, cy)
                 )
@@ -157,7 +159,7 @@ fun StakeoutRadar(
                 )
             } else {
                 drawCircle(
-                    color = Color(0xFFFFB300),
+                    color = Color(0xFFE66710),
                     radius = 10f,
                     center = Offset(cx, cy)
                 )
