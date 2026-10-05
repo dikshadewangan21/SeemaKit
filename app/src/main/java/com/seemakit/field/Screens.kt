@@ -110,7 +110,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                         }
                     }
                     Spacer(Modifier.height(12.dp))
-                    Text("BHU-SEEMA", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = Color.White)
+                    Text("SeemaKit", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = Color.White)
                     Text("Digital Cadastre Portal • Government of India", style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.8f))
                     Spacer(Modifier.height(4.dp))
                     Surface(shape = RoundedCornerShape(4.dp), color = GovColors.Green) {
@@ -227,7 +227,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                                 }
                                 Spacer(Modifier.width(10.dp))
                                 Column {
-                                    Text("BHU-SEEMA", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text("SeemaKit", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                     Text("Digital Cadastre & Land Records Portal", style = MaterialTheme.typography.labelSmall, color = GovColors.TextSecondary, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                 }
                             }
@@ -1496,13 +1496,13 @@ private fun TargetTelemetryCard(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.AccountBalance, contentDescription = null, tint = GovColors.DeepBlue)
                             Spacer(Modifier.width(8.dp))
-                            Text("About BhuSeema / SeemaKit", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                            Text("About SeemaKit", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                         }
                         Surface(shape = RoundedCornerShape(4.dp), color = GovColors.PrimaryContainer) {
                             Text("Digital India Cadastral Initiative", modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall, color = GovColors.DeepBlue, fontWeight = FontWeight.Bold)
                         }
                         Text(
-                            "BhuSeema is a decentralized, centimeter-accurate RTK land boundary surveying system. " +
+                            "SeemaKit is a decentralized, centimeter-accurate RTK land boundary surveying system. " +
                             "It empowers revenue patwaris, panchayats, and farmers to demarcate land parcels at 1/50th the cost of commercial Total Stations, " +
                             "preventing boundary disputes through dual-witness legal Panchnama records.",
                             style = MaterialTheme.typography.bodySmall,
