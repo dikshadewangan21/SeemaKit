@@ -111,7 +111,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                     }
                     Spacer(Modifier.height(12.dp))
                     Text("BHU-SEEMA", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = Color.White)
-                    Text("Digital Cadastre Portal • भारत सरकार", style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.8f))
+                    Text("Digital Cadastre Portal • Government of India", style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.8f))
                     Spacer(Modifier.height(4.dp))
                     Surface(shape = RoundedCornerShape(4.dp), color = GovColors.Green) {
                         Text("OFFICIAL SURVEYOR ACTIVE", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall, color = Color.White, fontWeight = FontWeight.Bold)
@@ -122,7 +122,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
 
                 NavigationDrawerItem(
                     icon = { Icon(Icons.Default.Place, null, tint = GovColors.DeepBlue) },
-                    label = { Text("Cadastral Parcels (भू-अभिलेख)", fontWeight = FontWeight.Medium) },
+                    label = { Text("Cadastral Parcels", fontWeight = FontWeight.Medium) },
                     selected = true,
                     onClick = { sc.launch { drawerState.close() } },
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
@@ -142,7 +142,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                 )
                 NavigationDrawerItem(
                     icon = { Icon(Icons.Default.Bluetooth, null, tint = GovColors.DeepBlue) },
-                    label = { Text("Rover Hardware SPP (रोवर सेटिंग)", fontWeight = FontWeight.Medium) },
+                    label = { Text("Rover Hardware SPP Settings", fontWeight = FontWeight.Medium) },
                     selected = false,
                     onClick = {
                         sc.launch {
@@ -352,7 +352,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                                         }
                                         Spacer(Modifier.width(12.dp))
                                         Column {
-                                            Text("Official Cadastral Registry (भू-अभिलेख रजिस्टर)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                                            Text("Official Cadastral Registry", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                                             Text("Select a surveyed khasra parcel to inspect boundary vectors, witness signatures, and legal area audit.", style = MaterialTheme.typography.bodySmall, color = GovColors.TextSecondary)
                                         }
                                     }
@@ -527,24 +527,24 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                 modifier = Modifier.verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text("Register land parcel details as recorded in official Record of Rights (RoR / खतौनी / पट्टा):", style = MaterialTheme.typography.bodySmall, color = GovColors.TextSecondary)
+                Text("Register land parcel details as recorded in official Record of Rights (RoR):", style = MaterialTheme.typography.bodySmall, color = GovColors.TextSecondary)
                 OutlinedTextField(
                     s, { s = it },
-                    label = { Text("Khasra / Survey Number (खसरा संख्या)") },
+                    label = { Text("Khasra / Survey Number") },
                     placeholder = { Text("e.g. 142/1") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
                     v, { v = it },
-                    label = { Text("Village / Gram Panchayat (ग्राम / पंचायत)") },
-                    placeholder = { Text("e.g. Rampur (रामपुर)") },
+                    label = { Text("Village / Gram Panchayat") },
+                    placeholder = { Text("e.g. Rampur") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
                 OutlinedTextField(
                     a, { a = it },
-                    label = { Text("RoR Registered Area (sq m) (रकबा)") },
+                    label = { Text("RoR Registered Area (sq m)") },
                     placeholder = { Text("e.g. 2450") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
@@ -663,7 +663,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                             Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                                 Icon(Icons.Default.Map, contentDescription = null, tint = GovColors.DeepBlue)
                                 Spacer(Modifier.width(8.dp))
-                                Text("Official 2D Cadastral Polygon Map (भू-नक्शा)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                                Text("Official 2D Cadastral Polygon Map", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                             }
                         }
 
@@ -712,8 +712,8 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                             gcp = gcp,
                             onGcpChange = { gcp = it },
                             onFillDemo = {
-                                owner = "Ramesh Kumar (मालिक)"
-                                neigh = "Suresh Patel (पड़ोसी)"
+                                owner = "Ramesh Kumar (Owner)"
+                                neigh = "Suresh Patel (Neighbor)"
                             },
                             canCapture = ok,
                             nextCornerSeq = corners.size + 1,
@@ -755,7 +755,7 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                         Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.Map, contentDescription = null, tint = GovColors.DeepBlue)
                             Spacer(Modifier.width(8.dp))
-                            Text("Official 2D Cadastral Polygon Map (भू-नक्शा)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                            Text("Official 2D Cadastral Polygon Map", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                         }
                     }
 
@@ -788,8 +788,8 @@ fun GovTricolorBand(modifier: Modifier = Modifier) {
                         gcp = gcp,
                         onGcpChange = { gcp = it },
                         onFillDemo = {
-                            owner = "Ramesh Kumar (मालिक)"
-                            neigh = "Suresh Patel (पड़ोसी)"
+                            owner = "Ramesh Kumar (Owner)"
+                            neigh = "Suresh Patel (Neighbor)"
                         },
                         canCapture = ok,
                         nextCornerSeq = corners.size + 1,
@@ -978,7 +978,7 @@ private fun WitnessCaptureCard(
                     }
                 }
                 Spacer(Modifier.width(8.dp))
-                Text("Panchnama Demarcation (पंचनामा गवाही)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                Text("Panchnama Demarcation", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                 Spacer(Modifier.weight(1f))
                 TextButton(onClick = onFillDemo) {
                     Text("Auto-Fill Demo", style = MaterialTheme.typography.labelSmall, color = GovColors.Saffron, fontWeight = FontWeight.Bold)
@@ -987,14 +987,14 @@ private fun WitnessCaptureCard(
 
             OutlinedTextField(
                 owner, onOwnerChange,
-                label = { Text("Land Owner Name (भूमि स्वामी / खातेदार)") },
+                label = { Text("Land Owner Name (Titleholder)") },
                 placeholder = { Text("e.g. Ramesh Kumar") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
             )
             OutlinedTextField(
                 neigh, onNeighChange,
-                label = { Text("Adjacent Neighbour Witness (पड़ोसी काश्तकार गवाह)") },
+                label = { Text("Adjacent Neighbour Witness") },
                 placeholder = { Text("e.g. Suresh Patel") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
@@ -1005,7 +1005,7 @@ private fun WitnessCaptureCard(
                     gcp, onGcpChange,
                     colors = CheckboxDefaults.colors(checkedColor = GovColors.Saffron)
                 )
-                Text("Tag as Ground Control Point (GCP / भू-नियंत्रण बिंदु)", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+                Text("Tag as Ground Control Point (GCP)", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
             }
 
             Button(
@@ -1042,7 +1042,7 @@ private fun SurveyedCornersList(
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Surveyed Corner Pegs (सीमा स्तंभ)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+            Text("Surveyed Corner Pegs", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
             Spacer(Modifier.weight(1f))
             Surface(shape = RoundedCornerShape(4.dp), color = GovColors.PrimaryContainer) {
                 Text("${corners.size} PEGS", modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
@@ -1108,7 +1108,7 @@ private fun AreaAuditCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(if (isDiscrepancy) Icons.Default.Warning else Icons.Default.CheckCircle, null, tint = if (isDiscrepancy) Color(0xFFC62828) else GovColors.GreenDark)
                 Spacer(Modifier.width(8.dp))
-                Text("Official Cadastral Area Audit (क्षेत्रफल मिलान)", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = if (isDiscrepancy) Color(0xFFC62828) else GovColors.GreenDark)
+                Text("Official Cadastral Area Audit", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = if (isDiscrepancy) Color(0xFFC62828) else GovColors.GreenDark)
             }
             HorizontalDivider(color = (if (isDiscrepancy) Color(0xFFEF5350) else GovColors.Green).copy(alpha = 0.3f))
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -1200,7 +1200,7 @@ private fun SurveyActionBar(
                         navigationIconContentColor = GovColors.DeepBlue
                     ),
                     title = {
-                        Text("Boundary Peg Relocation (निशानदेही)", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
+                        Text("Boundary Peg Relocation (Stakeout)", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = GovColors.DeepBlue)
                     },
                     navigationIcon = {
                         IconButton(onClick = { nc.popBackStack() }) {

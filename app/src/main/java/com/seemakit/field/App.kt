@@ -72,7 +72,7 @@ class VM(app: Application) : AndroidViewModel(app) {
     fun stepDemoCorner() = rover.stepNextDemoCorner()
 
     fun loadDemoData() = viewModelScope.launch {
-        val pid = dao.addParcel(Parcel(surveyNo = "142/1", village = "Rampur (रामपुर)", rorAreaSqm = 2450.0))
+        val pid = dao.addParcel(Parcel(surveyNo = "142/1", village = "Rampur", rorAreaSqm = 2450.0))
         val now = System.currentTimeMillis()
         dao.addCorner(Corner(parcelId = pid, seq = 1, lat = 21.251480, lon = 81.629500, quality = 4, hdop = 0.7, sats = 24, time = now, isGcp = true, ownerWitness = "Ramesh Kumar", neighbourWitness = "Suresh Patel"))
         dao.addCorner(Corner(parcelId = pid, seq = 2, lat = 21.251930, lon = 81.629520, quality = 4, hdop = 0.8, sats = 23, time = now + 120000, isGcp = false, ownerWitness = "Ramesh Kumar", neighbourWitness = "Kailash Verma"))
