@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.SeemaKit" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">#2E7D32</item>
-        <item name="android:navigationBarColor">#1B5E20</item>
+        <item name="android:statusBarColor">#0B3C5D</item>
+        <item name="android:navigationBarColor">#07273D</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>
